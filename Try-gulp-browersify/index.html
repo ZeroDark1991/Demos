@@ -8,25 +8,6 @@
 </head>
 <body>
 <div id="app"></div>
-<script type="text/jsx">
-	var Child = React.createClass({
-		render: function(){
-			return (
-				<div> Child </div>					
-				)
-		}
-	});
-	var Parent = React.createClass({
-	render: function(){
-	return(
-	    <div>
-	        <div>Hello World!</div>
-	        <Child />
-        </div>
-		)
-		}
-	});
-	React.render(<Parent />,document.getElementById('app'));
-</script>
+<script src='js/bundle.js'></script>
 </body>
 </html>
