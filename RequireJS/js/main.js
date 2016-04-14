@@ -15,8 +15,8 @@ require(['jquery','hello'], function ($,hello){
 
 require(['jquery','hello'], function ($,hello){
 	function bb(){
-		$('#run').css('color','red');
+		$('#run').css({'color':'red','font-size':'40px'});
 	}
 	　　　　hello.run();
-	bb();
+	setTimeout(function(){bb();},1000);
 });
