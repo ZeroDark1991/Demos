@@ -1,7 +1,7 @@
 var Child = React.createClass({
   render: function(){
     return (
-      <div>Child</div>
+      <div>Childxxx1111</div>
     )
   }
 });
