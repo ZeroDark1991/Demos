@@ -1,5 +1,5 @@
 var Child = React.createClass({
-  render: function(){
+  render(){
     return (
       <div>Child</div>
     )

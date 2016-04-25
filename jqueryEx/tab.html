@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style type="text/css">
+			li{ list-style: none;display: inline-block;width: 100px;height: 20px;text-align: center;} 
+			.active{background-color: royalblue;}
+		</style>
+	</head>
+	<body>
+		<div id="test"></div>
+		<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+
+<script type="text/javascript">
+$.fn.Tabselector = function(option){
+	var arr = [];
+	arr.push('<div class="tabselector"> <ul>');
+	$.each(option.data,function(index,item){
+		arr.push('<li data-value=',item.value,'>');
+		arr.push(item.name);
+		arr.push('</li>');
+	});
+	arr.push('</ul><div>');
+	
+	this.html(arr.join(''));
+	
+	var lastSelect = null;
+	this.on('click','li',function(){
+		var $this = $(this);
+		if (lastSelect){
+			lastSelect.removeClass("active");
+		}
+		$this.addClass("active");
+		lastSelect = $this;
+	});
+	return this;
+}
+var option = {data :[{name:'aaa',value:1},{name:'bbb',value:1}]};
+$("#test").Tabselector(option);
+
+	</script>
+	</body>
+</html>
