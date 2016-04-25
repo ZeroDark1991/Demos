@@ -18,7 +18,7 @@ var Child = React.createClass({
     return React.createElement(
       "div",
       null,
-      "Child"
+      "Childxxx1111"
     );
   }
 });
