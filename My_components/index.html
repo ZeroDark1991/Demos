@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>compo go</title>
+	<style type="text/css">
+	.red{color:red;}
+	</style>
+</head>
+<body>
+<table id="test_table">
+	<thead>
+		<tr>
+			<td>1</td>
+			<td>2</td>
+		</tr>
+	</thead>
+	<tbody>
+		
+	</tbody>
+</table>
+<div id="form">
+	<input name="val1" value="val1-v">
+	<input name="val2" value="val2-v">
+	<input name="val3" value="val3-v">
+	<input name="val4" value="val4-v">
+
+</div>
+</body>
+<script type="text/javascript" src="http://cdn.bootcss.com/jquery/2.2.1/jquery.min.js"></script>
+<script type="text/javascript">
+$.fn.extend({
+	tableConcat : function(option){
+	    //option中 { list:Array, tags:Array(string || obj=>{class:className,text:字段名}) }。
+	    //list => 数据所在的数组list
+	    //tags => 对应的字段名，格式是字符串。如果需要给对应的td加css类，则格式是对象{class:类名，text:字段名}。
+		var htmlData = [],
+		tableHtml = '',
+		$this = $(this);
+
+		$.each(option.list,function(idx,val){
+			var trData = '<tr>';
+			var obj = val;
+
+			$.each(option.tags,function(index,item){
+				var buffer = item.class?'<td class='+item.class+'>' + obj[item.text] +'</td>':'<td>' + obj[item] +'</td>';
+				trData += buffer;
+			});
+
+			trData += '</tr>';
+			htmlData.push(trData);
+		});
+
+		tableHtml = htmlData.join("");
+		$this.find('tbody').empty().append(tableHtml);
+	},
+	getForm : function(){
+		//jquery实例方法，对包含表单的容器使用。
+		//获取表单中的值，以name为key，value为值，封装成对象。
+		var $this = $(this);
+		var formData = {};
+		var formCata = ['input','select','textarea'];
+		$.each(formCata,function(idx,item){
+			var formEle = $this.find(item);
+			if(formEle){
+				formEle.each(function(i,ele){
+					var eleName = $(ele).attr('name');
+					if(eleName){
+						formData[eleName] = $(ele).val().trim();
+					}
+				});
+			}
+		});
+		return formData;
+	},
+	setForm : function(option){
+		$this = $(this);
+	}
+});
+
+$(function(){
+	var list = [{arg1:111,arg2:222},{arg1:111,arg2:222}]
+
+	var option = {
+		list : list,
+		tags : ['arg1',{class:'red',text:'arg2'}],
+	};
+
+	$("#test_table").tableConcat(option);
+	console.log($("#form").getForm());
+});
+</script>
+</html>
