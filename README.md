@@ -1,2 +1,2 @@
-# Learning-WebDev
+# Demos
 Daily Practice Demo
