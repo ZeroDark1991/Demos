@@ -2,6 +2,9 @@
   <div class="main container">
     <input type="text" v-model="text" />
     <div class="hello">Hello {{ text }}!</div>
+    <div class="" @click='doSomething'>
+      {{ message }}
+    </div>
     <div class="text-center">
       <dropdown>
         <button type="button" class="btn btn-success" data-toggle="dropdown">
@@ -26,11 +29,18 @@
     replace: false,
   	data() {
       return {
-        text: 'vue'
+        text: 'vue',
+        message: 'hi man'
       }
     },
     components: {
       dropdown
     },
+    methods:{
+      doSomething :function(){
+        this.message = 'message changed';
+        this.text = 'text changed';
+      }
+    }
   }
 </script>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+<ul id='target'></ul>
+<script>
+    console.time()
+	var frag = document.createDocumentFragment()
+	var data = [
+        {
+        	title: 'title1',
+        	link: 'http://www.baidu.com'
+        },
+        {
+        	title: 'title2',
+        	link: 'http://www.xiami.com',
+        }
+	]
+	data.forEach(function(item){
+		var li = document.createElement('li')
+		var a = document.createElement('a')
+		var text = document.createTextNode(item.title)
+		a.appendChild(text)
+		a.href = item.link
+		li.appendChild(a)
+		frag.appendChild(li)
+	})
+	document.querySelector('#target').appendChild(frag)
+    console.timeEnd('done')
+    var arr = [1,2]
+    console.log(arr instanceof Array)
+</script>
+</body>
+</html>
